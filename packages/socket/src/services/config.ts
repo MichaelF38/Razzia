@@ -1,8 +1,8 @@
 import { EXAMPLE_QUIZZ } from "@razzia/common/constants"
 import type {
-  GameResult,
-  GameResultMeta,
-  QuizzWithId,
+    GameResult,
+    GameResultMeta,
+    QuizzWithId,
 } from "@razzia/common/types/game"
 import { quizzValidator } from "@razzia/common/validators/quizz"
 import { normalizeFilename } from "@razzia/socket/utils/game"
@@ -16,7 +16,7 @@ interface GameConfig {
 
 const inContainerPath = process.env.CONFIG_PATH
 
-const getPath = (path = "") =>
+export const getPath = (path = "") =>
   inContainerPath
     ? resolve(inContainerPath, path)
     : resolve(process.cwd(), "../../config", path)
@@ -107,6 +107,12 @@ export const initConfig = () => {
       getPath("quizz/example.json"),
       JSON.stringify({ id: nanoid(), ...EXAMPLE_QUIZZ }, null, 2),
     )
+  }
+
+  const isMediaFolderExists = fs.existsSync(getPath("media"))
+
+  if (!isMediaFolderExists) {
+    fs.mkdirSync(getPath("media"))
   }
 }
 

@@ -19,6 +19,9 @@
     "invalidPassword": "Mot de passe invalide",
     "passwordNotConfigured": "Mot de passe manager non configuré"
   },
+  "media": {
+    "failedToList": "Impossible de lister les médias locaux"
+  },
   "notFound": {
     "back": "Retour à l'accueil",
     "description": "La page que vous recherchez n'existe pas.",

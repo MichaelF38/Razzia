@@ -19,6 +19,9 @@
     "invalidPassword": "パスワードが無効です",
     "passwordNotConfigured": "管理者パスワードが設定されていません"
   },
+  "media": {
+    "failedToList": "ローカルメディアの一覧取得に失敗しました"
+  },
   "notFound": {
     "back": "ホームに戻る",
     "description": "お探しのページは存在しません。",

@@ -19,6 +19,9 @@
     "invalidPassword": "Ungültiges Passwort",
     "passwordNotConfigured": "Manager-Passwort ist nicht konfiguriert"
   },
+  "media": {
+    "failedToList": "Lokale Medien konnten nicht aufgelistet werden"
+  },
   "notFound": {
     "back": "Zurück zur Startseite",
     "description": "Die gesuchte Seite existiert nicht.",

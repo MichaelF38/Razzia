@@ -59,6 +59,11 @@ export const EVENTS = {
     DATA: "results:data",
     DELETE: "results:delete",
   },
+  MEDIA: {
+    LIST: "media:list",
+    DATA: "media:data",
+    ERROR: "media:error",
+  },
 } as const
 
 export const NO_TIME_LIMIT = -1
@@ -81,6 +86,29 @@ export const MEDIA_TYPES = {
   VIDEO: "video",
   AUDIO: "audio",
 } as const
+
+// Path prefix used to store/serve files browsed from the local `config/media` folder
+export const LOCAL_MEDIA_PREFIX = "/media/"
+
+export const MEDIA_EXTENSIONS: Record<string, (typeof MEDIA_TYPES)[keyof typeof MEDIA_TYPES]> = {
+  ".jpg": MEDIA_TYPES.IMAGE,
+  ".jpeg": MEDIA_TYPES.IMAGE,
+  ".png": MEDIA_TYPES.IMAGE,
+  ".webp": MEDIA_TYPES.IMAGE,
+  ".gif": MEDIA_TYPES.IMAGE,
+  ".avif": MEDIA_TYPES.IMAGE,
+  ".svg": MEDIA_TYPES.IMAGE,
+  ".mp4": MEDIA_TYPES.VIDEO,
+  ".webm": MEDIA_TYPES.VIDEO,
+  ".ogv": MEDIA_TYPES.VIDEO,
+  ".mov": MEDIA_TYPES.VIDEO,
+  ".mp3": MEDIA_TYPES.AUDIO,
+  ".ogg": MEDIA_TYPES.AUDIO,
+  ".wav": MEDIA_TYPES.AUDIO,
+  ".m4a": MEDIA_TYPES.AUDIO,
+  ".aac": MEDIA_TYPES.AUDIO,
+  ".flac": MEDIA_TYPES.AUDIO,
+}
 
 export const EXAMPLE_QUIZZ = {
   subject: "Example Quizz",

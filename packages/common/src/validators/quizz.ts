@@ -1,15 +1,50 @@
 import {
-  MEDIA_TYPES,
-  QUESTION_TYPES,
-  SCORING_MODES,
+    LOCAL_MEDIA_PREFIX,
+    MEDIA_TYPES,
+    QUESTION_TYPES,
+    SCORING_MODES,
 } from "@razzia/common/constants"
 import { z } from "zod"
+
+// Accepts `/media/<segments>` with no traversal, backslashes, or extra scheme.
+export const isLocalMediaPath = (value: string): boolean => {
+  if (!value.startsWith(LOCAL_MEDIA_PREFIX) || value.includes("\\")) {
+    return false
+  }
+
+  let decoded: string
+
+  try {
+    decoded = decodeURIComponent(value)
+  } catch {
+    return false
+  }
+
+  const segments = decoded.slice(LOCAL_MEDIA_PREFIX.length).split("/")
+
+  return segments.every((segment) => segment !== "" && segment !== "..")
+}
+
+const isAbsoluteHttpUrl = (value: string): boolean => {
+  try {
+    const url = new URL(value)
+
+    return url.protocol === "http:" || url.protocol === "https:"
+  } catch {
+    return false
+  }
+}
 
 export const questionMediaValidator = z.object({
   type: z
     .enum([MEDIA_TYPES.IMAGE, MEDIA_TYPES.VIDEO, MEDIA_TYPES.AUDIO])
     .optional(),
-  url: z.url("errors:quizz.invalidMediaUrl"),
+  url: z
+    .string()
+    .refine(
+      (value) => isAbsoluteHttpUrl(value) || isLocalMediaPath(value),
+      "errors:quizz.invalidMediaUrl",
+    ),
 })
 
 const multiOptionsValidator = z.object({

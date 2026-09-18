@@ -6,6 +6,7 @@
   "noQuestionYet": "No question yet",
   "question": {
     "addMediaHint": "Add an image, video or audio to your question",
+    "browseLocal": "Browse local media",
     "config": {
       "answerTime": "Answer time",
       "answerTimeHint": "Time players have to answer",
@@ -34,6 +35,11 @@
       "audio": "Audio",
       "image": "Image",
       "video": "Video"
+    },
+    "mediaBrowser": {
+      "empty": "No media files found in this folder",
+      "root": "Media",
+      "title": "Select local media"
     },
     "mediaUrlPlaceholder": "Enter URL...",
     "placeholder": "Start typing your question..."

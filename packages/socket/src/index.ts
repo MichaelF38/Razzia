@@ -1,6 +1,7 @@
 import type { Server } from "@razzia/common/types/game/socket"
 import { gameSocketHandlers } from "@razzia/socket/handlers/game"
 import { managerSocketHandlers } from "@razzia/socket/handlers/manager"
+import { mediaSocketHandlers } from "@razzia/socket/handlers/media"
 import { quizzSocketHandlers } from "@razzia/socket/handlers/quizz"
 import { resultsSocketHandlers } from "@razzia/socket/handlers/results"
 import type { SocketHandler } from "@razzia/socket/handlers/types"
@@ -23,6 +24,7 @@ const socketHandlers: SocketHandler[] = [
   quizzSocketHandlers,
   gameSocketHandlers,
   resultsSocketHandlers,
+  mediaSocketHandlers,
 ]
 
 io.on("connection", (socket) => {

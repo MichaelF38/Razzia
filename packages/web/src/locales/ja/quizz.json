@@ -6,6 +6,7 @@
   "noQuestionYet": "まだ質問がありません",
   "question": {
     "addMediaHint": "質問に画像、動画、音声を追加できます",
+    "browseLocal": "ローカルメディアを参照",
     "config": {
       "answerTime": "回答時間",
       "answerTimeHint": "プレイヤーが回答できる時間",
@@ -34,6 +35,11 @@
       "audio": "音声",
       "image": "画像",
       "video": "動画"
+    },
+    "mediaBrowser": {
+      "empty": "このフォルダにはメディアファイルが見つかりません",
+      "root": "メディア",
+      "title": "ローカルメディアを選択"
     },
     "mediaUrlPlaceholder": "URLを入力...",
     "placeholder": "質問を入力してください..."
