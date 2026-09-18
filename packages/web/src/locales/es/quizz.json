@@ -6,6 +6,7 @@
   "noQuestionYet": "Aún no hay preguntas",
   "question": {
     "addMediaHint": "Añade una imagen, video o audio a tu pregunta",
+    "browseLocal": "Explorar medios locales",
     "config": {
       "answerTime": "Tiempo de respuesta",
       "answerTimeHint": "Tiempo que tienen los jugadores para responder",
@@ -34,6 +35,11 @@
       "audio": "Audio",
       "image": "Imagen",
       "video": "Video"
+    },
+    "mediaBrowser": {
+      "empty": "No se encontraron archivos multimedia en esta carpeta",
+      "root": "Medios",
+      "title": "Seleccionar medios locales"
     },
     "mediaUrlPlaceholder": "Introduce la URL...",
     "placeholder": "Empieza a escribir tu pregunta..."

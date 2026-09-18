@@ -4,9 +4,10 @@ import Button from "@razzia/web/components/Button"
 import Card from "@razzia/web/components/Card"
 import Input from "@razzia/web/components/Input"
 import QuestionMedia from "@razzia/web/components/QuestionMedia"
+import MediaBrowser from "@razzia/web/features/quizz/components/MediaBrowser"
 import { useQuizzEditor } from "@razzia/web/features/quizz/contexts/quizz-editor-context"
-import { Image, ImageOff, Music, Video } from "lucide-react"
-import { type ChangeEvent } from "react"
+import { FolderOpen, Image, ImageOff, Music, Video } from "lucide-react"
+import { type ChangeEvent, useState } from "react"
 import toast from "react-hot-toast"
 import { useTranslation } from "react-i18next"
 
@@ -14,6 +15,7 @@ const QuestionEditorMedia = () => {
   const { updateQuestion, currentIndex, currentQuestion } = useQuizzEditor()
   const questionMedia = currentQuestion.media
   const { t } = useTranslation()
+  const [isBrowserOpen, setIsBrowserOpen] = useState(false)
 
   const hadnleChangeMediaType = (type: QuestionMediaType) => () => {
     const result = questionMediaValidator.safeParse({
@@ -44,6 +46,14 @@ const QuestionEditorMedia = () => {
     })
   }
 
+  const handleSelectLocalMedia = (media: {
+    type: QuestionMediaType
+    url: string
+  }) => {
+    updateQuestion(currentIndex, { media })
+    setIsBrowserOpen(false)
+  }
+
   return (
     <div className="relative z-10 flex flex-1 flex-col items-center justify-center gap-3 p-4">
       <QuestionMedia media={currentQuestion.media} alt="Question Media" />
@@ -54,13 +64,23 @@ const QuestionEditorMedia = () => {
           <p className="text-accent-foreground text-center text-sm">
             {t("quizz:question.addMediaHint")}
           </p>
-          <Input
-            variant="sm"
-            className="w-full max-w-md"
-            placeholder={t("quizz:question.mediaUrlPlaceholder")}
-            value={questionMedia?.url ?? ""}
-            onChange={handleChangeMedia}
-          />
+          <div className="flex w-full max-w-md items-center gap-2">
+            <Input
+              variant="sm"
+              className="flex-1"
+              placeholder={t("quizz:question.mediaUrlPlaceholder")}
+              value={questionMedia?.url ?? ""}
+              onChange={handleChangeMedia}
+            />
+            <Button
+              size="sm"
+              onClick={() => setIsBrowserOpen(true)}
+              className="bg-accent text-accent-foreground hover:bg-accent shrink-0 transition-colors"
+              title={t("quizz:question.browseLocal")}
+            >
+              <FolderOpen className="size-5" />
+            </Button>
+          </div>
           <div className="flex flex-wrap justify-center gap-2">
             <Button
               onClick={hadnleChangeMediaType("image")}
@@ -102,6 +122,13 @@ const QuestionEditorMedia = () => {
             {t("common:delete")}
           </Button>
         </div>
+      )}
+
+      {isBrowserOpen && (
+        <MediaBrowser
+          onSelect={handleSelectLocalMedia}
+          onClose={() => setIsBrowserOpen(false)}
+        />
       )}
     </div>
   )

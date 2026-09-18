@@ -19,6 +19,9 @@
     "invalidPassword": "Contraseña incorrecta",
     "passwordNotConfigured": "La contraseña del administrador no está configurada"
   },
+  "media": {
+    "failedToList": "Error al listar los medios locales"
+  },
   "notFound": {
     "back": "Volver al inicio",
     "description": "La página que buscas no existe.",

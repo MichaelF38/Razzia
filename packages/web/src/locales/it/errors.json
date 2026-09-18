@@ -19,6 +19,9 @@
     "invalidPassword": "Password non valida",
     "passwordNotConfigured": "La password del gestore non è configurata"
   },
+  "media": {
+    "failedToList": "Impossibile elencare i media locali"
+  },
   "notFound": {
     "back": "Torna alla home",
     "description": "La pagina che cerchi non esiste.",

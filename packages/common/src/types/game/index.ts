@@ -1,7 +1,7 @@
 import type {
-  MEDIA_TYPES,
-  QUESTION_TYPES,
-  SCORING_MODES,
+    MEDIA_TYPES,
+    QUESTION_TYPES,
+    SCORING_MODES,
 } from "@razzia/common/constants"
 
 export type QuestionType = (typeof QUESTION_TYPES)[keyof typeof QUESTION_TYPES]
@@ -36,6 +36,19 @@ export type QuestionMediaType =
 export interface QuestionMedia {
   type?: QuestionMediaType
   url: string
+}
+
+export interface MediaEntry {
+  name: string
+  path: string
+  kind: "directory" | "file"
+  type?: QuestionMediaType
+}
+
+export interface MediaListing {
+  path: string
+  parent: string | null
+  entries: MediaEntry[]
 }
 
 export interface Question {

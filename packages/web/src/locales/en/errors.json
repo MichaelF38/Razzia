@@ -19,6 +19,9 @@
     "invalidPassword": "Invalid password",
     "passwordNotConfigured": "Manager password is not configured"
   },
+  "media": {
+    "failedToList": "Failed to list local media"
+  },
   "notFound": {
     "back": "Go back home",
     "description": "The page you are looking for does not exist.",

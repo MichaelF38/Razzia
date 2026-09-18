@@ -1,9 +1,10 @@
 import { EVENTS } from "@razzia/common/constants"
 import type {
-  GameResult,
-  GameUpdateQuestion,
-  Player,
-  QuizzWithId,
+    GameResult,
+    GameUpdateQuestion,
+    MediaListing,
+    Player,
+    QuizzWithId,
 } from "@razzia/common/types/game"
 import type { Status, StatusDataMap } from "@razzia/common/types/game/status"
 import type { ManagerConfig } from "@razzia/common/types/manager"
@@ -89,6 +90,10 @@ export interface ServerToClientEvents {
 
   // Results events
   [EVENTS.RESULTS.DATA]: (_result: GameResult) => void
+
+  // Media events
+  [EVENTS.MEDIA.DATA]: (_listing: MediaListing) => void
+  [EVENTS.MEDIA.ERROR]: (_message: string) => void
 }
 
 export interface ClientToServerEvents {
@@ -129,6 +134,9 @@ export interface ClientToServerEvents {
   // Results actions
   [EVENTS.RESULTS.GET]: (_id: string) => void
   [EVENTS.RESULTS.DELETE]: (_id: string) => void
+
+  // Media actions
+  [EVENTS.MEDIA.LIST]: (_path: string) => void
 
   // Common
   disconnect: () => void
